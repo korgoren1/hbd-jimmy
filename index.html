@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Jimmy</title>
+    <style>
+        body {
+            text-align: center;
+            background: linear-gradient(to right, #ff9a9e, #fad0c4);
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+        }
+        h1 {
+            color: #fff;
+            font-size: 3em;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+            animation: glow 1.5s infinite alternate;
+        }
+        @keyframes glow {
+            from { text-shadow: 2px 2px 10px rgba(255, 255, 255, 0.8); }
+            to { text-shadow: 2px 2px 20px rgba(255, 255, 255, 1); }
+        }
+        .message {
+            font-size: 1.5em;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            margin: 20px auto;
+            border-radius: 15px;
+            max-width: 600px;
+            box-shadow: 0px 4px 10px rgba(0,0,0,0.2);
+            transition: all 0.5s ease-in-out;
+        }
+        .floating {
+            position: absolute;
+            animation: float 5s infinite;
+        }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+        .styled-message {
+            font-size: 1.6em;
+            font-weight: bold;
+            color: #ff4081;
+            text-shadow: 2px 2px 8px rgba(255, 64, 129, 0.8);
+            background: rgba(255, 255, 255, 0.9);
+            padding: 15px;
+            border-radius: 10px;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <h1>🎉 Happy Birthday, Jimmy! 🎂🎈</h1>
+    <div class="message" id="randomMessage">
+        <p>Dear Jimmy,</p>
+        <p id="dynamicMessage" class="styled-message">Wishing you the happiest of birthdays! May your day be filled with love, laughter, and all the joy you bring to others. Have an amazing year ahead!</p>
+        <p>With love,</p>
+        <p><strong>Faith Mwangi</strong></p>
+    </div>
+    <button onclick="playMusic()">🎵 Play Birthday Song</button>
+    <button onclick="displayRandomMessage()">💌 Show Another Wish</button>
+    <audio id="birthdaySong" src="https://www.bensound.com/bensound-music/bensound-birthday.mp3" controls></audio>
+    <script>
+        function playMusic() {
+            let audio = document.getElementById("birthdaySong");
+            audio.play();
+        }
+        
+        function displayRandomMessage() {
+            const messages = [
+                "<span class='styled-message' style='color: blue;'>Hope your special day is filled with all your favorite things! 🎈</span>",
+                "<span class='styled-message' style='color: green;'>May your birthday be as amazing as you are! 🎂</span>",
+                "<span class='styled-message' style='color: orange;'>Wishing you happiness and success in everything you do! 🎁</span>",
+                "<span class='styled-message' style='color: purple;'>Another year, another adventure! Have a fantastic birthday! 🎊</span>",
+                "<span class='styled-message' style='color: red;'>Keep shining and spreading joy! Happy Birthday! ✨</span>"
+            ];
+            const randomIndex = Math.floor(Math.random() * messages.length);
+            document.getElementById("dynamicMessage").innerHTML = messages[randomIndex];
+        }
+        
+        function createBalloonsAndHearts() {
+            for (let i = 0; i < 20; i++) {
+                let balloon = document.createElement("div");
+                balloon.innerHTML = "🎈";
+                balloon.className = "floating";
+                balloon.style.left = Math.random() * 100 + "vw";
+                balloon.style.top = Math.random() * 100 + "vh";
+                balloon.style.fontSize = Math.random() * 40 + 20 + "px";
+                document.body.appendChild(balloon);
+                
+                let heart = document.createElement("div");
+                heart.innerHTML = "❤️";
+                heart.className = "floating";
+                heart.style.left = Math.random() * 100 + "vw";
+                heart.style.top = Math.random() * 100 + "vh";
+                heart.style.fontSize = Math.random() * 30 + 15 + "px";
+                document.body.appendChild(heart);
+            }
+        }
+        
+        createBalloonsAndHearts();
+    </script>
+</body>
+</html>
